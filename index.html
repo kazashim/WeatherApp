@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather APP</title>
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./jquery.js"></script>
+    <script src="./script.js"></script>
+    <script>
+            function error(msg){
+            
+                return '<div id="error-cover"> <div class="errorbox"><span class="close"> &CircleTimes;</span><span class="msg">'+msg+'</span></div></div>';
+            }
+            $(function(){
+                if(navigator.onLine){
+                    $.getJSON('http://api.openweathermap.org/data/2.5/weather?q=lusaka&APPID=e8976b283d18e12ce394743b908ca427&units=metric', (data, resp) =>{
+                       let  data2 = data;
+                        console.log(data);
+                        const icon = 'http://openweathermap.org/img/w/'+data.weather[0].icon+'.png';
+                        const temp = data.main.temp;
+                        const maxTemp = data.main.temp_max;
+                        const minTemp = data.main.temp_min;
+                        const status = data.weather[0].main;
+                        const descriton = data.weather[0].description;
+                        const windSpeed =  data.wind.speed;
+                        const windDirecton = data.wind.deg;
+                        $('.temp').find($('.val')).text(temp);
+                        $('.maxtemp').find($('.val')).text(maxTemp);
+                        $('.mintemp').find($('.val')).text(minTemp);
+                        $('.icon').find($('img')).attr('src', icon);
+                        $('.status').find($('.val')).text(status);
+                        $('.windspeed').find($('.val')).text(windSpeed);
+                        $('.description').text(descriton);
+                    })
+                }else{
+                    console.warn('Internet connection not detected...');
+                   $('#error').html(error('Internet connection not detected'));
+                }
+            });
+    </script>
+
+</head>
+<body>
+    <div id="error"></div>
+    <header>
+        <div class="top-most-items">
+            <span><h1 class="app-name">WeatherMe</h1></span>
+            <span><img src="./images/icons8-location-logo-48.png" alt="my current location" title="Current Location"></span>
+            <span><img src="./images/icons8-search-64.png" alt="search" title="search by location"></span>
+        </div>
+        <nav>
+            <a href="#" class="active">Today</a>
+            <a href="#">Tomorrow</a>
+            <a href="#">This Week</a>
+        </nav>
+    </header>
+    <div id="main">
+        <span class="two-sections">
+            <section class="left">
+                <label class="status"> Currently : <span class="description"></span></label>
+                <hr>
+                <span class="temp"> <label class="val"></label> <sup>&#8451;</sup></span>
+                <span class="maxtemp">&#8593;<label class="val"> </label> <sup>&#8451;</sup></span>
+                <span class="mintemp">&#8595;<label class="val"></label> <sup>&#8451;</sup></span>
+            </section>
+            <section class="right">
+                    <span class="icon"><span class="temp"> <img src="" alt=""></span></span>
+                    <span class="status"><label class="val"></label></span>
+                    <span class="windspeed">&#8599;<label class="val"></label> m/s</span>
+            </section>
+        </pan>
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+
+    body{
+        background: rgb(255, 255, 255);
+        overflow: hidden;
+        overflow-y: auto;
+        margin: 0px;
+        padding: 0px;
+    }
+    header{
+        display: flex;
+        top: 0px;
+        padding: 5px 10px;
+        box-sizing: border-box;
+        width: 100%;
+        background: rgba(255, 255, 255, .895);
+        box-shadow: 0px 1px 8px rgba(0, 0, 0, .14);
+        min-height: 50px;
+        flex-flow: column;
+    }
+    a{text-decoration: none;}
+    img, a{
+        -webkit-user-drag: none;
+        -moz-user-drag:none;
+        -o-user-drag: none;
+        -ms-user-drag:none;
+    }
+    *{
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 13.4px;
+    }
+    .top-most-items{
+        display: flex;
+        align-items: center;
+        align-content: center;
+        height: 35px;
+        justify-content: space-between;
+        box-shadow: 0px 1px 0px rgba(0, 0, 0, .14);
+    }
+    .top-most-items .app-name{
+        color: rgb(0, 0, 255);
+        font-size: large;
+        float: left;
+    }
+    .top-most-items span{
+        text-align: center;
+        width: 33%;
+    }
+    .top-most-items img{
+        width: 35px;
+    }
+    nav{
+        display: inline-flex;
+        height: 35px;
+        justify-content: space-between;
+        margin-top: 5px;
+    }
+    nav a{
+        padding: 10px 0px;
+        width: 33%;
+        text-align: center;
+        font-size: 15.4px;
+        font-stretch: extra-expanded;
+        font-size-adjust: 100%;
+        color: rgba(82, 78, 78, 0.781);
+        font-weight: 500;
+        
+    }
+    nav a.active{
+        color: rgb(82, 78, 78);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.096);
+        
+        
+    }
