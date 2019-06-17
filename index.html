@@ -12,12 +12,12 @@
     <script>
             function error(msg){
             
-                return '<div id="error-cover"> <div class="errorbox"><span class="close"> &CircleTimes;</span><span class="msg">'+msg+'</span></div></div>';
+                return '<div id="error-cover"> <div class="errorbox"><span class="close" id="close_error"> &CircleTimes;</span><span class="msg">'+msg+'</span></div></div>';
             }
             $(function(){
+                // !when user is online
                 if(navigator.onLine){
                     $.getJSON('http://api.openweathermap.org/data/2.5/weather?q=lusaka&APPID=e8976b283d18e12ce394743b908ca427&units=metric', (data, resp) =>{
-                       let  data2 = data;
                         console.log(data);
                         const icon = 'http://openweathermap.org/img/w/'+data.weather[0].icon+'.png';
                         const temp = data.main.temp;
@@ -36,8 +36,13 @@
                         $('.description').text(descriton);
                     })
                 }else{
+                    // if !internet connection 
                     console.warn('Internet connection not detected...');
                    $('#error').html(error('Internet connection not detected'));
+                   $('#error #close_error').click(function(e){
+                        e.preventDefault();
+                        $('#error-cover').fadeOut();
+                    });
                 }
             });
     </script>
