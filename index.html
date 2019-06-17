@@ -21,6 +21,7 @@
                         console.log(data);
                         const icon = 'http://openweathermap.org/img/w/'+data.weather[0].icon+'.png';
                         const temp = data.main.temp;
+                        const city = data.name + ' - ' + data.sys.country;
                         const maxTemp = data.main.temp_max;
                         const minTemp = data.main.temp_min;
                         const status = data.weather[0].main;
@@ -33,7 +34,7 @@
                         $('.icon').find($('img')).attr('src', icon);
                         $('.status').find($('.val')).text(status);
                         $('.windspeed').find($('.val')).text(windSpeed);
-                        $('.description').text(descriton);
+                        $('.description').text(city);
                     })
                 }else{
                     // if !internet connection 
@@ -48,6 +49,16 @@
     </script>
 
 </head>
+
+
+
+<!-- 
+    FOR DEBUGGING AND BUILD PURPOSES, KINDLY CHECK THE CONSOLE USING [CTR+ SHITFT + I] keyboard command
+ -->
+
+
+
+
 <body>
     <div id="error"></div>
     <header>
@@ -68,13 +79,13 @@
                 <label class="status"> Currently : <span class="description"></span></label>
                 <hr>
                 <span class="temp"> <label class="val"></label> <sup>&#8451;</sup></span>
-                <span class="maxtemp">&#8593;<label class="val"> </label> <sup>&#8451;</sup></span>
-                <span class="mintemp">&#8595;<label class="val"></label> <sup>&#8451;</sup></span>
+                <span class="maxtemp">  <i>&#8593;</i> &nbsp;<label class="val"> </label> <sup>&#8451;</sup></span>
+                <span class="mintemp"> <i>&#8595;</i> &nbsp;<label class="val"></label> <sup>&#8451;</sup></span>
             </section>
             <section class="right">
                     <span class="icon"><span class="temp"> <img src="" alt=""></span></span>
                     <span class="status"><label class="val"></label></span>
-                    <span class="windspeed">&#8599;<label class="val"></label> m/s</span>
+                    <span class="windspeed">&#8599; &nbsp; <label class="val"></label> m/s</span>
             </section>
         </pan>
     </div>
